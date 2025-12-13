@@ -52,7 +52,9 @@ jobs:
         uses: animMouse/setup-ffmpeg@v1
 
       - name: install deps and start comfyui server
-        run: ./scripts/comfyui-api.sh 1
+        run: |
+          chmod +x scripts/*.sh
+          ./scripts/comfyui-api.sh 1
 
       - name: set_up mega and get image prompts
         run: |
