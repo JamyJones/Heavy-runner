@@ -24,7 +24,7 @@ jobs:
         id: generate
         run: |
           prompts_count=$(jq 'keys | length' ./prompts.json)
-          MATRIX=$(seq 1 $prompts_count | jq -c '[inputs]')
+          MATRIX=$(seq 0 $(( prompts_count - 1 )) | jq -c '[inputs]')
           echo "::set-output name=matrix::$MATRIX"
 
   proccess-json-data:
