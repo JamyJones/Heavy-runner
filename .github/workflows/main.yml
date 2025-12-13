@@ -16,6 +16,7 @@ jobs:
           token: ${{ secrets.TK }}
       - name: set_up mega and get image prompts
         run: |
+          chmod +x scripts/*.sh
           ./scripts/mega_nz.sh
           mega-get /Content/prompts.json ./
 
