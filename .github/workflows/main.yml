@@ -66,9 +66,8 @@ jobs:
       - name: set_up mega and get image prompts
         run: |
           ./scripts/mega_nz.sh
-          mega-get /Content/prompts.json ./
 
       - name: Generate files using GPU from API call
         run: |
-          ls 
+          mega-get /Content/prompts.json ./
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
