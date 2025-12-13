@@ -24,7 +24,7 @@ jobs:
         run: |
           cp -r json_files/* .
           prompts_count=$(jq 'keys | length' ./prompts.json)
-          MATRIX=$(seq 0 $prompts_count | jq -c '[inputs]')
+          MATRIX=$(seq 1 $prompts_count | jq -c '[inputs]')
           echo "::set-output name=matrix::$MATRIX"
 
   proccess-json-data:
