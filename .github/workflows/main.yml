@@ -72,7 +72,11 @@ jobs:
           mega-get /Content/prompts.json ./
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
           png_count=$(find ComfyUI/output -type f --pattern "*.png" | wc -l)
-          while [[ $png_count -lt 0 ]]; do
+          while true; do
+            png_count=$(find ComfyUI/output -type f -name "*.png" | wc -l)
+            if [[ $png_count -ge 1 ]]; then
+              break
+            fi
             sleep 60
           done
 
