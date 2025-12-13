@@ -70,4 +70,5 @@ jobs:
 
       - name: Generate files using GPU from API call
         run: |
+          ls 
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
