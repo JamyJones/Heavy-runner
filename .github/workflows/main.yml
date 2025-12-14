@@ -71,14 +71,6 @@ jobs:
         run: |
           mega-get /Content/prompts.json ./
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
-      - name: Collect images
+      - name: upload build images
         run: |
-          while true; do
-            png_count=$(find ComfyUI/output -type f -name "*.png" | wc -l)
-            if [[ $png_count -ge 1 ]]; then
-              dir=$(jq -r .dir prompts.json)
-              mega-put -c ComfyUI/output/* "/Content/$dir/samples" 
-            fi
-            sleep 60
-          done
-
+          ./scripts/wait_gen.sh
