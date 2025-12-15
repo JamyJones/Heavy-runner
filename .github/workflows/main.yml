@@ -67,4 +67,5 @@ jobs:
           chmod +x scripts/*.sh
           ./scripts/comfyui-api.sh 1
           mega-get /Content/prompts.json ./
+          netstat -tuln
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
