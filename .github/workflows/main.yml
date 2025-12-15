@@ -68,6 +68,7 @@ jobs:
           ./scripts/mega_nz.sh
 
       - name: Generate files using GPU from API call
+        if: ${{ !cancelled() }}
         run: |
           mega-get /Content/prompts.json ./
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
