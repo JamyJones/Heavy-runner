@@ -58,20 +58,13 @@ jobs:
       - name: install ffmpeg
         uses: animMouse/setup-ffmpeg@v1
 
-      - name: install deps and start comfyui server
-        run: |
-          chmod +x scripts/*.sh
-          ./scripts/comfyui-api.sh 1
-
       - name: set_up mega and get image prompts
         run: |
           ./scripts/mega_nz.sh
 
-      - name: Generate files using GPU from API call
-        if: ${{ !cancelled() }}
+      - name: install deps and start comfyui server
         run: |
+          chmod +x scripts/*.sh
+          ./scripts/comfyui-api.sh 1
           mega-get /Content/prompts.json ./
           python scripts/pyScripts/automateImageGen.py ${{ matrix.chunk_id }}
-      - name: upload build images
-        run: |
-          ./scripts/wait_gen.sh
