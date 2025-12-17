@@ -24,7 +24,9 @@ jobs:
         run: |
           pip install yt-dlp
           pip install bs4
+          pip install "scrapling[fetchers]"
           pip install "scrapling[shell]"
+          scrapling install
 
       - name: Get info.json
         run: |
