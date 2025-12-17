@@ -24,6 +24,7 @@ jobs:
         run: |
           pip install yt-dlp
           pip install bs4
+          pip install "scrapling[shell]"
 
       - name: Get info.json
         run: |
@@ -37,7 +38,7 @@ jobs:
               fi
           }
           for page in $(seq 1 5);do
-            echo "$page" | bash scripts/otherScripts/yewtube/getPage.sh > "index$page.html"
+            echo "$page" | bash scripts/otherScripts/yewtube/getPage.sh
           done
           python scripts/otherScripts/yewtube/scrap.py
           python scripts/pyScripts/extractVideoInfo.py
