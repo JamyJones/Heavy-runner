@@ -5,14 +5,6 @@ jobs:
   Work-time:
     runs-on: ubuntu-latest
     steps:
-      - name: Maximize build space
-        uses: AdityaGarg8/remove-unwanted-software@v5
-        with:
-          remove-android: 'true'
-          remove-dotnet: 'true'
-          remove-codeql: 'true'
-          remove-cached-tools: 'true'
-
       - name: Checkout private tools
         uses: actions/checkout@v4
         with:
