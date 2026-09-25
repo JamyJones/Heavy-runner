@@ -19,7 +19,7 @@ jobs:
         id: generate
         run: |
           IFS=" " read -r input_count file_label <<< $(wc matrix_input.txt -l)
-          MATRIX=$(seq 0 $input_count) | jq -c '[inputs]')
+          MATRIX=$(seq 0 $input_count | jq -c '[inputs]')
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
         shell: bash
 
