@@ -19,11 +19,11 @@ jobs:
         id: generate
         run: |
           IFS=" " read -r input_count file_label <<< $(wc matrix_input.txt -l)
-          MATRIX=$(seq 0 $((input_count - 1)) | jq -c '[inputs]')
+          MATRIX=$(seq 0 $input_count) | jq -c '[inputs]')
           echo "matrix=$MATRIX" >> $GITHUB_OUTPUT
         shell: bash
 
-  proccess-json-data:
+  proccess-matrix:
     needs: generate-matrix
     runs-on: ubuntu-latest
     strategy:
