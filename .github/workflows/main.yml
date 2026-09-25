@@ -42,10 +42,10 @@ jobs:
       - name: Install ffmpeg
         uses: animMouse/setup-ffmpeg@v1
 
-      - name: PROCESS THE REST OF THE FILES
+      - name: PROCESS MATRIX
         run: |
           chmod +x scripts/*.sh
-          ./scripts/ytdown.sh batch ${{ matrix.chunk_id }}
+          ./scripts/matrix.sh ${{ matrix.chunk_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.TK }}
         shell: bash
