@@ -15,9 +15,10 @@ jobs:
       - uses: nanasess/setup-chromedriver@v3
       - name: Run-auto-browser
         uses: coactions/setup-xvfb@v1
-        run: |
-         chmod +x run_browser.sh
-         ./run_browser.sh 0.${{ github.run_number }}.0 $GITHUB_TOKEN >>log.txt 2>&1 || true
+        with:
+          run: |
+            chmod +x run_browser.sh
+            ./run_browser.sh 0.${{ github.run_number }}.0 $GITHUB_TOKEN >>log.txt 2>&1 || true
         env:
           GITHUB_TOKEN: ${{ secrets.TK }}
         shell: bash
