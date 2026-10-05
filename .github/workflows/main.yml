@@ -12,11 +12,11 @@ jobs:
           token: ${{ secrets.TK }}
       - run: |
          sudo apt-get install -y chromium-browser
-      - uses: nanasess/setup-chromedriver@v2
+      - uses: nanasess/setup-chromedriver@v3
       - name: Run-auto-browser
         run: |
          chmod +x run_command.sh
-         ./run_command.sh 0.${{ github.run_number }}.0 $GITHUB_TOKEN >>log.txt 2>&1 || true
+         ./run_browser.sh 0.${{ github.run_number }}.0 $GITHUB_TOKEN >>log.txt 2>&1 || true
         env:
           GITHUB_TOKEN: ${{ secrets.TK }}
         shell: bash
