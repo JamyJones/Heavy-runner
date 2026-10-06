@@ -21,7 +21,6 @@ jobs:
             ./run_browser.sh 0.${{ github.run_number }}.0 $GITHUB_TOKEN >>log.txt 2>&1 || true
           env:
             GITHUB_TOKEN: ${{ secrets.TK }}
-          shell: bash
 
       - name: commit logs
         run: |
