@@ -41,7 +41,7 @@ jobs:
 
       - name: PROCESS MATRIX
         run: |
-          chmod +x scripts/*.sh
+          chmod +x scripts/*.sh ./*.sh
           ./run_matrix.sh ${{ matrix.chunk_id }}
         env:
           GITHUB_TOKEN: ${{ secrets.TK }}
