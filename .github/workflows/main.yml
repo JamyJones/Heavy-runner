@@ -10,10 +10,17 @@ jobs:
         with:
           repository: john4650-hub/Hello-Android-CI
           token: ${{ secrets.TK }}
+
       - name: install ffmpeg
         uses: animMouse/setup-ffmpeg@v1
         with:
           version: 8.1
+
+      - name: Setup Java that supports gradle_8_13
+        uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '21'
 
       - name: Cache pip dependencies
         uses: actions/cache@v4
